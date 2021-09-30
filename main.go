@@ -9,6 +9,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/badforlabor/gocrazy/crazyio"
 	"time"
 )
 
@@ -38,7 +39,7 @@ func doMove() {
 
 	var now = time.Now()
 	var count = 0
-	var e = MovePath(*src, *dst, func(s string, e error) {
+	var e = crazyio.MovePathWithCallback(*src, *dst, func(s string, e error) {
 		count++
 		if time.Now().Sub(now) > time.Second {
 			fmt.Println("processed-count", count)
